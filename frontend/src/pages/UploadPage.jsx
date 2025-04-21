@@ -25,7 +25,7 @@ const UploadPage = () => {
       formData.append("image", image); // MUST match Flask key
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/api/predict`,
+        `${import.meta.env.VITE_API_BASE_URL}/predict`,
         {
           method: "POST",
           body: formData,
