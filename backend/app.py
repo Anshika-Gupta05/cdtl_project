@@ -4,12 +4,17 @@ from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
 import torch
+from dotenv import load_dotenv
 import os
 from utils.model_utils import load_model, predict_image, apply_gradcam
 
+load_dotenv()  # Load environment variables from .env file
+
 app = Flask(__name__)
 
-CORS(app, origins=["https://cdtl-project-frontend.vercel.app"]) 
+frontend_url = os.environ.get("FRONTEND_URL")
+CORS(app, origins=[frontend_url])
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 model_path = os.path.join(BASE_DIR, 'models', 'final_lung_disease_model.pth')
