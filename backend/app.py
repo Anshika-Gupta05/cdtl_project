@@ -9,7 +9,7 @@ from utils.model_utils import load_model, predict_image, apply_gradcam
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "https://cdtl-project-frontend.vercel.app"}})
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 model_path = os.path.join(BASE_DIR, 'models', 'final_lung_disease_model.pth')
