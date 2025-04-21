@@ -11,7 +11,7 @@ from utils.model_utils import load_model, predict_image, apply_gradcam
 load_dotenv()  # Load environment variables from .env file
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/predict": {"origins": "https://cdtl-project-frontend.vercel.app"}})
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
